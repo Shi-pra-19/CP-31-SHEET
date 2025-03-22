@@ -1,0 +1,31 @@
+import sys
+
+INF = 1000000005
+
+def solve():
+    n = int(sys.stdin.readline())
+    a = list(map(int, sys.stdin.readline().split()))
+
+    t1, t2 = INF, INF
+    ans = 0
+
+    for num in a:
+        if t1 > t2:
+            t1, t2 = t2, t1
+        if num <= t1:
+            t1 = num
+        elif num <= t2:
+            t2 = num
+        else:
+            t1 = num
+            ans += 1
+
+    print(ans)
+
+def main():
+    t = int(sys.stdin.readline())
+    for _ in range(t):
+        solve()
+
+if __name__ == "__main__":
+    main()
